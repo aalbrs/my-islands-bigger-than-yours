@@ -65,11 +65,11 @@ export default Vue.extend({
                     // a guess that the map has already synched, scale level is the same
                     return;
                 }
-                console.warn("Comparea: " + this.mapId + ": setting zoom to " + scaleLevel);
+                console.warn("mibty: " + this.mapId + ": setting zoom to " + scaleLevel);
                 await this.esriMap.goTo({
                     zoom: scaleLevel
                 });
-                console.warn("Comparea: " + this.mapId + ": scale set")
+                console.warn("mibty: " + this.mapId + ": scale set")
                 this.$store.commit("syncing", false);
             }
         },

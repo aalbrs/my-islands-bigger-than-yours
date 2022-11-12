@@ -4,7 +4,7 @@
         <div id="nav">
             <div id="nav1">
                 <div class="nav1-inner">
-                    <div class="title">Comparea</div>
+                    <div class="title">My Island's Bigger Than Yours</div>
                     <!-- to add, sync map scale toggle button -->
                     <!-- <div class="button">Sync</div> -->
                 </div>
