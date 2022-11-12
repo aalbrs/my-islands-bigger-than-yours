@@ -45,7 +45,9 @@ var loadEsriModules = (apiOptions) => {
     var promise = new Promise((resolve, reject) => {
         // include all required modules here for performance, even if not using them now 
         // modules are saved in memory and this function is called early in lifecycle 
-        esriLoader.loadModules(['esri/views/MapView',
+        esriLoader.loadModules([
+            "esri/config",
+            'esri/views/MapView',
             "esri/views/SceneView",
             "esri/Map",
             'esri/WebMap',
@@ -55,7 +57,9 @@ var loadEsriModules = (apiOptions) => {
             "esri/tasks/Locator",
             "esri/widgets/BasemapToggle"
 
-        ], apiOptions).then(([MapView,
+        ], apiOptions).then(([
+            esriConfig,
+            MapView,
             SceneView,
             Map,
             WebMap,
@@ -70,6 +74,9 @@ var loadEsriModules = (apiOptions) => {
                 // add all modules here as needed 
                 watchUtils: watchUtils
             };
+            // add API key
+            esriConfig.apiKey = "AAPKb2a0569ce4ce46ef8d1a4cb2db649c7fr468CGP2QCgVv-oWt5Qf45nTqaidqaIWxZGjZZOwBG_KfBePJanwBO3xLu-z6S5x";
+
             resolve();
 
         }, (err) => {
@@ -117,7 +124,7 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
             ]) => {
 
                 var map = new Map({
-                    basemap: "streets",
+                    basemap: "arcgis-imagery",
                     // A ground preset containing a single elevation layer, sourced from
                     // https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer
                     ground: "world-elevation"
