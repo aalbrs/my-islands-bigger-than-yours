@@ -1,6 +1,9 @@
 # My Island's Bigger Than Yours
 
+
 A simple tool for visually comparing between two maps. When zooming, maps synchronise to the same scale and relative areas can be seen (approximately). 
+
+https://www.myislandsbiggerthanyours.com/
 
 Built with:
 - Vue.js
@@ -22,15 +25,6 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
