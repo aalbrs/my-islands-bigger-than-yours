@@ -54,7 +54,6 @@ var loadEsriModules = (apiOptions) => {
             "esri/core/watchUtils",
             "esri/widgets/ScaleBar",
             "esri/widgets/Search",
-            "esri/tasks/Locator",
             "esri/widgets/BasemapToggle"
 
         ], apiOptions).then(([
@@ -66,7 +65,6 @@ var loadEsriModules = (apiOptions) => {
             watchUtils,
             ScaleBar,
             Search,
-            Locator,
             BasemapToggle
         ]) => {
             // make a global var
@@ -109,7 +107,6 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                 "esri/core/watchUtils",
                 "esri/widgets/ScaleBar",
                 "esri/widgets/Search",
-                "esri/tasks/Locator",
                 "esri/widgets/BasemapToggle"
             ])
             .then(([
@@ -119,7 +116,6 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                 watchUtils,
                 ScaleBar,
                 Search,
-                Locator,
                 BasemapToggle
             ]) => {
 
@@ -138,9 +134,7 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                 // if search widget requested
                 if (searchDomNode) {
                     var sources = [{
-                        locator: new Locator({
-                            url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-                        }),
+                        url: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer",
                         singleLineFieldName: "SingleLine",
                         outFields: ["Addr_type"],
                         name: "ArcGIS World Geocoding Service",
@@ -162,7 +156,7 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                 // add map widgets
                 var toggle = new BasemapToggle({
                     view: view,
-                    nextBasemap: "hybrid"
+                    nextBasemap: "streets-vector"
                 });
                 view.ui.add(toggle, "top-right");
 
