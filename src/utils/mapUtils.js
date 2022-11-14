@@ -54,7 +54,9 @@ var loadEsriModules = (apiOptions) => {
             "esri/core/watchUtils",
             "esri/widgets/ScaleBar",
             "esri/widgets/Search",
-            "esri/widgets/BasemapToggle"
+            "esri/widgets/BasemapToggle",
+            "esri/rest/locator",
+            "esri/Graphic"
 
         ], apiOptions).then(([
             esriConfig,
@@ -65,7 +67,9 @@ var loadEsriModules = (apiOptions) => {
             watchUtils,
             ScaleBar,
             Search,
-            BasemapToggle
+            BasemapToggle,
+            Locator,
+            Graphic
         ]) => {
             // make a global var
             window.esriModules = {
@@ -107,7 +111,9 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                 "esri/core/watchUtils",
                 "esri/widgets/ScaleBar",
                 "esri/widgets/Search",
-                "esri/widgets/BasemapToggle"
+                "esri/widgets/BasemapToggle",
+                "esri/rest/locator",
+                "esri/Graphic"
             ])
             .then(([
                 SceneView,
@@ -116,7 +122,9 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                 watchUtils,
                 ScaleBar,
                 Search,
-                BasemapToggle
+                BasemapToggle,
+                Locator,
+                Graphic
             ]) => {
 
                 var map = new Map({
@@ -138,10 +146,10 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                         singleLineFieldName: "SingleLine",
                         outFields: ["Addr_type"],
                         name: "ArcGIS World Geocoding Service",
-                        localSearchOptions: {
-                            minScale: 300000,
-                            distance: 50000
-                        },
+                        // localSearchOptions: {
+                        //     minScale: 300000,
+                        //     distance: 50000
+                        // },
                         placeholder: searchPlaceholder
                     }];
 
@@ -156,7 +164,7 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
                 // add map widgets
                 var toggle = new BasemapToggle({
                     view: view,
-                    nextBasemap: "streets-vector"
+                    nextBasemap: "arcgis-navigation"
                 });
                 view.ui.add(toggle, "top-right");
 
