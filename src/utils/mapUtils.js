@@ -79,6 +79,15 @@ var loadEsriModules = (apiOptions) => {
             // add API key
             esriConfig.apiKey = "AAPKb2a0569ce4ce46ef8d1a4cb2db649c7fr468CGP2QCgVv-oWt5Qf45nTqaidqaIWxZGjZZOwBG_KfBePJanwBO3xLu-z6S5x";
 
+            esriConfig.request.interceptors.push({
+                before: function (params) {
+                    // referer not being sent on deployed app. Testing.
+                    params.requestOptions.header = {
+                        referer: location.href
+                    }
+                },
+            });
+
             resolve();
 
         }, (err) => {
@@ -105,17 +114,17 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
         // load esri API
         // first, we use Dojo's loader to require the map class
         esriLoader.loadModules([
-                "esri/config",
-                "esri/views/SceneView",
-                "esri/Map",
-                'esri/WebMap',
-                "esri/core/watchUtils",
-                "esri/widgets/ScaleBar",
-                "esri/widgets/Search",
-                "esri/widgets/BasemapToggle",
-                "esri/rest/locator",
-                "esri/Graphic"
-            ])
+            "esri/config",
+            "esri/views/SceneView",
+            "esri/Map",
+            'esri/WebMap',
+            "esri/core/watchUtils",
+            "esri/widgets/ScaleBar",
+            "esri/widgets/Search",
+            "esri/widgets/BasemapToggle",
+            "esri/rest/locator",
+            "esri/Graphic"
+        ])
             .then(([
                 esriConfig,
                 SceneView,
