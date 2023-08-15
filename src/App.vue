@@ -56,13 +56,13 @@ import MapPart from "@/parts/MapPart.vue";
 // load esri modules
 // load esri styles for version 4.x using loadCss
 import { loadCss } from "esri-loader";
-loadCss('4.25');
+loadCss('4.27');
 import mapUtils from "@/utils/mapUtils";
 // start loading esri modules for performance,
 // called again in created to ensure loading happens before other logic.
 // esri-loader *should* ensure no double-loading happens...
 var apiOptions = {
-    version: '4.25'
+    version: '4.27'
 }
 mapUtils.loadEsriModules(apiOptions).then(() => {});
 
