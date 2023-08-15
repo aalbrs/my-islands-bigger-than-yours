@@ -77,8 +77,14 @@ var loadEsriModules = (apiOptions) => {
                 watchUtils: watchUtils
             };
             // add API key
-            esriConfig.apiKey = "AAPKb2a0569ce4ce46ef8d1a4cb2db649c7fr468CGP2QCgVv-oWt5Qf45nTqaidqaIWxZGjZZOwBG_KfBePJanwBO3xLu-z6S5x";
+            
+            // d.aa account:
+            // esriConfig.apiKey = "AAPKb2a0569ce4ce46ef8d1a4cb2db649c7fr468CGP2QCgVv-oWt5Qf45nTqaidqaIWxZGjZZOwBG_KfBePJanwBO3xLu-z6S5x";
+            
+            // aalbe. account:
+            esriConfig.apiKey = "AAPK7abf79bc68e64178a8985de96cc5de57zo6W6VXuTSt3MlhsegSd_SJI5RXQnp7RkUV5Nazw3-vY4zV6SS1oZ4FeeWIjgWpy";
 
+            /*
             esriConfig.request.interceptors.push({
                 before: function (params) {
                     // referer not being sent on deployed app. Testing.
@@ -86,7 +92,7 @@ var loadEsriModules = (apiOptions) => {
                         referer: location.href
                     }
                 },
-            });
+            }); */
 
             resolve();
 
