@@ -145,7 +145,7 @@ function loadEsriMap(domNode, searchDomNode, searchPlaceholder) {
             ]) => {
 
                 // add API key
-                esriConfig.apiKey = "AAPKb2a0569ce4ce46ef8d1a4cb2db649c7fr468CGP2QCgVv-oWt5Qf45nTqaidqaIWxZGjZZOwBG_KfBePJanwBO3xLu-z6S5x";
+                esriConfig.apiKey = "AAPK7abf79bc68e64178a8985de96cc5de57zo6W6VXuTSt3MlhsegSd_SJI5RXQnp7RkUV5Nazw3-vY4zV6SS1oZ4FeeWIjgWpy";
 
                 var map = new Map({
                     basemap: "arcgis-imagery",
