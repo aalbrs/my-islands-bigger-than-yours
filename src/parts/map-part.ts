@@ -14,7 +14,7 @@ export interface MapPart {
 export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement, searchPlaceholder: string): MapPart {
 
     var map = new Map({
-        basemap: "topo-3d", // or "topo-vector",
+        basemap: "topo-vector", // "topo-3d" uses different licensing
         
         // A ground preset containing a single elevation layer, sourced from
         // https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer
