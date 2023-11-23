@@ -1,13 +1,56 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/4.28/@arcgis/core/assets/esri/themes/light/main.css" />
+    <title>My Island's Bigger Than Yours</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="nav">
+            <div id="nav1">
+                <div class="nav1-inner">
+                    <div class="title">My Island's Bigger Than Yours</div>
+                </div>
+            </div>
+            <div id="nav2">
+                <div class="columns">
+                    <div class="column">
+                        <div id="search1" class="search-wrapper"></div>
+                    </div>
+                    <div class="column">
+                        <div id="search2" class="search-wrapper"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main">
+            <div class="columns map-columns is-gapless">
+                <div class="column">
+                    <div class="map-wrapper">
+                        <div class="scale-text">
+                            <div id="scale1" class="scale-text-label"></div>
+                        </div>
+                        <div id="map1" class="esri-map"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="map-wrapper">
+                        <div class="scale-text">
+                            <div id="scale2" class="scale-text-label"></div>
+                        </div>
+                        <div id="map2" class="esri-map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
-  </body>
+</body>
+
 </html>
