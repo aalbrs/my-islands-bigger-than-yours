@@ -14,7 +14,8 @@ export interface MapPart {
 export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement, searchPlaceholder: string): MapPart {
 
     var map = new Map({
-        basemap: "arcgis-imagery",
+        basemap: "topo-3d", // or "topo-vector",
+        
         // A ground preset containing a single elevation layer, sourced from
         // https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer
         ground: "world-elevation"
@@ -28,7 +29,7 @@ export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement,
     // add map widgets
     var toggle = new BasemapToggle({
         view: view,
-        nextBasemap: "arcgis-navigation"
+        nextBasemap: "arcgis-imagery"
     });
     view.ui.add(toggle, "top-right");
 
@@ -62,6 +63,7 @@ function setupSearch(view: SceneView, searchDomNode: HTMLDivElement, searchPlace
         view: view,
         includeDefaultSources: false,
         sources: sources,
+        popupEnabled: false
     });
     return searchWidget;
 }

@@ -123,6 +123,10 @@ body,
         background-color: #fff;
         padding-left: 4px;
         padding-right: 4px;
+
+        .scales-equal {
+            color: green;
+        }
     }
 
     .map-wrapper {
