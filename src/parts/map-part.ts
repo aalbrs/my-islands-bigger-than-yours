@@ -1,9 +1,9 @@
 import Map from "@arcgis/core/Map.js";
 import Search from "@arcgis/core/widgets/Search";
-import ScaleBar from "@arcgis/core/widgets/ScaleBar";
 import BasemapToggle from "@arcgis/core/widgets/BasemapToggle";
-import MapView from "@arcgis/core/views/MapView";
 import SceneView from "@arcgis/core/views/SceneView";
+// import MapView from "@arcgis/core/views/MapView";
+// import ScaleBar from "@arcgis/core/widgets/ScaleBar";
 
 
 export interface MapPart {
@@ -42,7 +42,7 @@ export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement,
     }
 }
 
-function setupSearch(view: SceneView, searchDomNode: HTMLDivElement, searchPlaceholder: string) {
+function setupSearch(view: SceneView, searchDomNode: HTMLDivElement, searchPlaceholder: string): Search {
 
     var sources = [{
         url: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer",
@@ -63,5 +63,5 @@ function setupSearch(view: SceneView, searchDomNode: HTMLDivElement, searchPlace
         includeDefaultSources: false,
         sources: sources,
     });
-    
+    return searchWidget;
 }

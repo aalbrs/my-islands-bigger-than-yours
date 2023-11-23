@@ -1,12 +1,11 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
 import { setupMap } from './parts/map-part.ts'
-import Map from "@arcgis/core/Map.js";
-import MapView from "@arcgis/core/views/MapView";
+// import MapView from "@arcgis/core/views/MapView";
 import SceneView from "@arcgis/core/views/SceneView";
 import * as reactiveUtils from "@arcgis/core/core/reactiveUtils";
 import esriConfig from "@arcgis/core/config";
+// SVGs:
+// import typescriptLogo from './typescript.svg'
 
 
 
