@@ -2,7 +2,7 @@ import Map from "@arcgis/core/Map.js";
 import Search from "@arcgis/core/widgets/Search";
 import BasemapToggle from "@arcgis/core/widgets/BasemapToggle";
 import MapView from "@arcgis/core/views/MapView";
-// import ScaleBar from "@arcgis/core/widgets/ScaleBar";
+import ScaleBar from "@arcgis/core/widgets/ScaleBar";
 
 
 export interface MapPart {
@@ -13,7 +13,7 @@ export interface MapPart {
 export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement, searchPlaceholder: string): MapPart {
 
     var map = new Map({
-        basemap: "arcgis-topographic", // also "topo-vector"
+        basemap: "streets-vector", // "topo-vector", "arcgis-topographic", "arcgis-navigation"
         
         // For SceneView, a ground preset containing a single elevation layer, sourced from
         // https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer
@@ -28,9 +28,15 @@ export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement,
     // add map widgets
     var toggle = new BasemapToggle({
         view: view,
-        nextBasemap: "arcgis-imagery"
+        nextBasemap: "arcgis-imagery",
     });
     view.ui.add(toggle, "top-right");
+
+    var scaleBar = new ScaleBar({
+        view: view,
+        unit: "dual"
+    });
+    view.ui.add(scaleBar, "bottom-right");
 
     // if search widget requested
     if (searchDomNode) {
