@@ -65,9 +65,10 @@ function onMapsReady(mapPart1: MapPart, mapPart2: MapPart) {
         await setMapToScale(mapPart2.view.zoom, mapPart1.view);
         updateUrlParams(mapPart1.view, mapPart2.view);
     });
+
 }
 
-function parseUrlOnStart(view1: SceneView, view2: SceneView) {
+async function parseUrlOnStart(view1: SceneView, view2: SceneView) {
     let hash = window.location.hash.replace("#", "");
     let paramStrings = hash.split("&");
     let params = {} as any;
@@ -80,11 +81,12 @@ function parseUrlOnStart(view1: SceneView, view2: SceneView) {
     setMapExtentFromParam(params.extent2, view2);
 }
 
-function setMapExtentFromParam(extentParam: string, view: SceneView) {
+async function setMapExtentFromParam(extentParam: string, view: SceneView) {
     if (extentParam) {
         let extent = new Extent(JSON.parse(extentParam));
-        view.goTo(extent);
+        await view.goTo(extent);
     }
+    Promise.resolve();
 }
 
 function setScaleTexts(
@@ -128,8 +130,8 @@ function scalesAreEqual(scaleLevel1: number, scaleLevel2: number) {
 }
 
 function updateUrlParams(view1: SceneView, view2: SceneView) {
-    let extent1 = JSON.stringify(view1.extent.toJSON());
-    let extent2 = JSON.stringify(view2.extent.toJSON());
+    let extent1 = encodeURIComponent(JSON.stringify(view1.extent.toJSON()));
+    let extent2 = encodeURIComponent(JSON.stringify(view2.extent.toJSON()));
     window.location.hash = `extent1=${extent1}&extent2=${extent2}`;
 }
 
