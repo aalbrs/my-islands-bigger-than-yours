@@ -1,27 +1,26 @@
 import Map from "@arcgis/core/Map.js";
 import Search from "@arcgis/core/widgets/Search";
 import BasemapToggle from "@arcgis/core/widgets/BasemapToggle";
-import SceneView from "@arcgis/core/views/SceneView";
-// import MapView from "@arcgis/core/views/MapView";
+import MapView from "@arcgis/core/views/MapView";
 // import ScaleBar from "@arcgis/core/widgets/ScaleBar";
 
 
 export interface MapPart {
-    view: SceneView,
+    view: MapView,
 }
 
 
 export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement, searchPlaceholder: string): MapPart {
 
     var map = new Map({
-        basemap: "arcgis-topographic", // also "topo-vector", "topo-3d", but may use different licensing
+        basemap: "arcgis-topographic", // also "topo-vector"
         
-        // A ground preset containing a single elevation layer, sourced from
+        // For SceneView, a ground preset containing a single elevation layer, sourced from
         // https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer
-        ground: "world-elevation"
+        // ground: "world-elevation"
     });
     // place map in container
-    var view = new SceneView({
+    var view = new MapView({
         map: map,
         container: element!
     });
@@ -43,7 +42,7 @@ export function setupMap(element: HTMLDivElement, searchDomNode: HTMLDivElement,
     }
 }
 
-function setupSearch(view: SceneView, searchDomNode: HTMLDivElement, searchPlaceholder: string): Search {
+function setupSearch(view: MapView, searchDomNode: HTMLDivElement, searchPlaceholder: string): Search {
 
     var sources = [{
         url: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer",

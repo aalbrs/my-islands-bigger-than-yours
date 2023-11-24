@@ -1,7 +1,6 @@
 import './style.css'
 import { MapPart, setupMap } from './parts/map-part.ts'
-// import MapView from "@arcgis/core/views/MapView";
-import SceneView from "@arcgis/core/views/SceneView";
+import MapView from "@arcgis/core/views/MapView";
 import Extent from "@arcgis/core/geometry/Extent";
 import * as reactiveUtils from "@arcgis/core/core/reactiveUtils";
 import esriConfig from "@arcgis/core/config";
@@ -68,7 +67,7 @@ function onMapsReady(mapPart1: MapPart, mapPart2: MapPart) {
 
 }
 
-async function parseUrlOnStart(view1: SceneView, view2: SceneView) {
+async function parseUrlOnStart(view1: MapView, view2: MapView) {
     let hash = window.location.hash.replace("#", "");
     let paramStrings = hash.split("&");
     let params = {} as any;
@@ -81,7 +80,7 @@ async function parseUrlOnStart(view1: SceneView, view2: SceneView) {
     setMapExtentFromParam(params.extent2, view2);
 }
 
-async function setMapExtentFromParam(extentParam: string, view: SceneView) {
+async function setMapExtentFromParam(extentParam: string, view: MapView) {
     if (extentParam) {
         let extent = new Extent(JSON.parse(extentParam));
         await view.goTo(extent);
@@ -91,9 +90,9 @@ async function setMapExtentFromParam(extentParam: string, view: SceneView) {
 
 function setScaleTexts(
     scaleNode1: HTMLDivElement,
-    view1: SceneView,
+    view1: MapView,
     scaleNode2: HTMLDivElement,
-    view2: SceneView) {
+    view2: MapView) {
 
     let className = 'scale-text-label';
     if (scalesAreEqual(view1.zoom, view2.zoom)) {
@@ -106,12 +105,12 @@ function setScaleTexts(
     scaleNode2.className = className;
 }
 
-function getScaleTextLabel(view: SceneView): string {
+function getScaleTextLabel(view: MapView): string {
     const roundedScale = view.scale.toFixed();
     return `1:${roundedScale}`;
 }
 
-async function setMapToScale(scaleLevel: number, esriMap: SceneView) {
+async function setMapToScale(scaleLevel: number, esriMap: MapView) {
     if (esriMap != null && scaleLevel != null) {
         if (scalesAreEqual(esriMap.zoom, scaleLevel)) {
             // a guess that the map has already synched, scale level is the same
@@ -129,7 +128,7 @@ function scalesAreEqual(scaleLevel1: number, scaleLevel2: number) {
     return diff > -0.1 && diff < 0.1;
 }
 
-function updateUrlParams(view1: SceneView, view2: SceneView) {
+function updateUrlParams(view1: MapView, view2: MapView) {
     let extent1 = encodeURIComponent(JSON.stringify(view1.extent.toJSON()));
     let extent2 = encodeURIComponent(JSON.stringify(view2.extent.toJSON()));
     window.location.hash = `extent1=${extent1}&extent2=${extent2}`;
