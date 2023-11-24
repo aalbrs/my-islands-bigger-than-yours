@@ -40,18 +40,18 @@ function onMapsReady(mapPart1: MapPart, mapPart2: MapPart) {
         return
     }
 
-    let scaleNode1 = document.querySelector<HTMLDivElement>('#scale1')!;
-    let scaleNode2 = document.querySelector<HTMLDivElement>('#scale2')!;
+    // let scaleNode1 = document.querySelector<HTMLDivElement>('#scale1')!;
+    // let scaleNode2 = document.querySelector<HTMLDivElement>('#scale2')!;
 
     parseUrlOnStart(mapPart1.view, mapPart2.view);
 
     mapPart1.view.watch("scale", () => {
         // show scale of zoomed map
-        setScaleTexts(scaleNode1, mapPart1.view, scaleNode2, mapPart2.view);
+        // setScaleTexts(scaleNode1, mapPart1.view, scaleNode2, mapPart2.view);
     });
 
     mapPart2.view.watch("scale", () => {
-        setScaleTexts(scaleNode1, mapPart1.view, scaleNode2, mapPart2.view);
+        // setScaleTexts(scaleNode1, mapPart1.view, scaleNode2, mapPart2.view);
     });
 
     reactiveUtils.when(() => mapPart1.view.stationary, async () => {
