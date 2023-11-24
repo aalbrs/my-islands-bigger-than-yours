@@ -88,27 +88,27 @@ async function setMapExtentFromParam(extentParam: string, view: MapView) {
     Promise.resolve();
 }
 
-function setScaleTexts(
-    scaleNode1: HTMLDivElement,
-    view1: MapView,
-    scaleNode2: HTMLDivElement,
-    view2: MapView) {
+// function setScaleTexts(
+//     scaleNode1: HTMLDivElement,
+//     view1: MapView,
+//     scaleNode2: HTMLDivElement,
+//     view2: MapView) {
 
-    let className = 'scale-text-label';
-    if (scalesAreEqual(view1.zoom, view2.zoom)) {
-        className += " scales-equal";
-    }
+//     let className = 'scale-text-label';
+//     if (scalesAreEqual(view1.zoom, view2.zoom)) {
+//         className += " scales-equal";
+//     }
 
-    scaleNode1.innerText = getScaleTextLabel(view1);
-    scaleNode2.innerText = getScaleTextLabel(view2);
-    scaleNode1.className = className;
-    scaleNode2.className = className;
-}
+//     scaleNode1.innerText = getScaleTextLabel(view1);
+//     scaleNode2.innerText = getScaleTextLabel(view2);
+//     scaleNode1.className = className;
+//     scaleNode2.className = className;
+// }
 
-function getScaleTextLabel(view: MapView): string {
-    const roundedScale = view.scale.toFixed();
-    return `1:${roundedScale}`;
-}
+// function getScaleTextLabel(view: MapView): string {
+//     const roundedScale = view.scale.toFixed();
+//     return `1:${roundedScale}`;
+// }
 
 async function setMapToScale(scaleLevel: number, esriMap: MapView) {
     if (esriMap != null && scaleLevel != null) {
