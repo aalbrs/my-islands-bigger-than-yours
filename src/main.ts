@@ -12,7 +12,7 @@ let map1Loaded = false;
 let map2Loaded = false;
 
 
-function main() {
+async function main() {
     // add API key
     esriConfig.apiKey = "AAPK3c865ec2c71f41e49052418a024ede58EAJZkVFI10QNlSKXOKRfBcnbudmUXrJlllvN6PZnHjnEb70aK58blgWOrziGedkm";
 
@@ -24,32 +24,36 @@ function main() {
     let mapPart1 = setupMap(mapNode1!, searchNode1!, 'Search for an island or place');
     let mapPart2 = setupMap(mapNode2!, searchNode2!, 'Compare with another place');
 
-    mapPart1.view.when(() => {
+    mapPart1.view.when(async () => {
         map1Loaded = true;
-        onMapsReady(mapPart1, mapPart2);
+        await onMapsReady(mapPart1, mapPart2);
     });
 
-    mapPart2.view.when(() => {
+    mapPart2.view.when(async () => {
         map2Loaded = true;
-        onMapsReady(mapPart1, mapPart2);
+        await onMapsReady(mapPart1, mapPart2);
     });
 }
 
-function onMapsReady(mapPart1: MapPart, mapPart2: MapPart) {
+async function onMapsReady(mapPart1: MapPart, mapPart2: MapPart) {
     if (!map1Loaded || !map2Loaded) {
-        return
+        return;
     }
 
+    try {
+        await parseUrlOnStart(mapPart1.view, mapPart2.view);    
+    } catch (error) {
+        console.error("mibty: error parsing startup params");
+        console.error(error);
+    }
+    
+    // to enable scale text
     // let scaleNode1 = document.querySelector<HTMLDivElement>('#scale1')!;
     // let scaleNode2 = document.querySelector<HTMLDivElement>('#scale2')!;
-
-    parseUrlOnStart(mapPart1.view, mapPart2.view);
-
     mapPart1.view.watch("scale", () => {
         // show scale of zoomed map
         // setScaleTexts(scaleNode1, mapPart1.view, scaleNode2, mapPart2.view);
     });
-
     mapPart2.view.watch("scale", () => {
         // setScaleTexts(scaleNode1, mapPart1.view, scaleNode2, mapPart2.view);
     });
@@ -64,7 +68,6 @@ function onMapsReady(mapPart1: MapPart, mapPart2: MapPart) {
         await setMapToScale(mapPart2.view.zoom, mapPart1.view);
         updateUrlParams(mapPart1.view, mapPart2.view);
     });
-
 }
 
 async function parseUrlOnStart(view1: MapView, view2: MapView) {
@@ -76,8 +79,9 @@ async function parseUrlOnStart(view1: MapView, view2: MapView) {
         let value = s.split("=")[1]
         params[key] = decodeURIComponent(value);
     });
-    setMapExtentFromParam(params.extent1, view1);
-    setMapExtentFromParam(params.extent2, view2);
+    await setMapExtentFromParam(params.extent1, view1);
+    await setMapExtentFromParam(params.extent2, view2);
+    Promise.resolve();
 }
 
 async function setMapExtentFromParam(extentParam: string, view: MapView) {
@@ -88,27 +92,27 @@ async function setMapExtentFromParam(extentParam: string, view: MapView) {
     Promise.resolve();
 }
 
-// function setScaleTexts(
-//     scaleNode1: HTMLDivElement,
-//     view1: MapView,
-//     scaleNode2: HTMLDivElement,
-//     view2: MapView) {
+function setScaleTexts(
+    scaleNode1: HTMLDivElement,
+    view1: MapView,
+    scaleNode2: HTMLDivElement,
+    view2: MapView) {
 
-//     let className = 'scale-text-label';
-//     if (scalesAreEqual(view1.zoom, view2.zoom)) {
-//         className += " scales-equal";
-//     }
+    let className = 'scale-text-label';
+    if (scalesAreEqual(view1.zoom, view2.zoom)) {
+        className += " scales-equal";
+    }
 
-//     scaleNode1.innerText = getScaleTextLabel(view1);
-//     scaleNode2.innerText = getScaleTextLabel(view2);
-//     scaleNode1.className = className;
-//     scaleNode2.className = className;
-// }
+    scaleNode1.innerText = getScaleTextLabel(view1);
+    scaleNode2.innerText = getScaleTextLabel(view2);
+    scaleNode1.className = className;
+    scaleNode2.className = className;
+}
 
-// function getScaleTextLabel(view: MapView): string {
-//     const roundedScale = view.scale.toFixed();
-//     return `1:${roundedScale}`;
-// }
+function getScaleTextLabel(view: MapView): string {
+    const roundedScale = view.scale.toFixed();
+    return `1:${roundedScale}`;
+}
 
 async function setMapToScale(scaleLevel: number, esriMap: MapView) {
     if (esriMap != null && scaleLevel != null) {
