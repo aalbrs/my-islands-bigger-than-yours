@@ -6,8 +6,8 @@ A simple tool for visually comparing between two maps. When zooming, maps synchr
 https://www.myislandsbiggerthanyours.com/
 
 Built with:
-- Vue.js
-- The ArcGIS Javascript API v4 and [esri-loader](https://github.com/Esri/esri-loader)
+- [Vite](https://vitejs.dev/)
+- [The ArcGIS Maps SDK for Javascript](https://developers.arcgis.com/javascript/latest/)
 
 
 ## Project setup
@@ -15,16 +15,12 @@ Built with:
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Develop
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
 ```
 npm run build
 ```
-
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
