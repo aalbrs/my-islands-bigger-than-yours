@@ -14,7 +14,7 @@ let map2Loaded = false;
 
 async function main() {
     // add API key
-    esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurACde3U08kHnbvXYlfr-fziXMnzrmolWYa2S2fA1bPRcRz6ORvQNK6a6H6LygfDjQ2wxE6rexSo5qx6gUc_Q7gMAlnu5e7vP6jDxUTj8WVLqpx2TwIKMRkas24le9d76lu-Lp08Mg3tadsWK_flfWGpBVfXpgAd39K3m_H9Ume2MH8oWHLhAzZJtb8KUgfURfkgXtPK0pgc4YoqyeNess8I.AT1_ga7zWaTJ";
+    esriConfig.apiKey = "AAPK3c865ec2c71f41e49052418a024ede58EAJZkVFI10QNlSKXOKRfBcnbudmUXrJlllvN6PZnHjnEb70aK58blgWOrziGedkm";
 
     let mapNode1 = document.querySelector<HTMLDivElement>('#map1');
     let mapNode2 = document.querySelector<HTMLDivElement>('#map2');
