@@ -120,7 +120,7 @@ async function setMapToScale(scaleLevel: number, esriMap: MapView) {
             // a guess that the map has already synched, scale level is the same
             return;
         }
-        console.warn(`mibty: setting ${esriMap.container.id} zoom to ${scaleLevel}`);
+        console.warn(`mibty: setting ${esriMap.container?.id} zoom to ${scaleLevel}`);
         await esriMap.goTo({
             zoom: scaleLevel
         });
