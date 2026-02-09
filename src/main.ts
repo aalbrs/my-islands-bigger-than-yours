@@ -11,10 +11,10 @@ import esriConfig from "@arcgis/core/config";
 let map1Loaded = false;
 let map2Loaded = false;
 
+// add API key
+esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurACde3U08kHnbvXYlfr-fzhYfvWRTBqxeLU1a_S3B0uS2rrup-yevDdSz5CE67SM4KgfW-QNPpg-2nP6MhrU1Pa1c-JVRUP_pvwZdm1gIyeGV-fcYVGOs020SdtNkxEmWRHtq6tm9rxfU6NHmYU2uJJWcvVsBuk8G6R4XrPa0c_DWiILsLJNBU8A6iczL9I6EYKU_-M-HF2p10n6irnfZW4.AT1_tfkE6epG";
 
 async function main() {
-    // add API key
-    esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurACde3U08kHnbvXYlfr-fzgh45ElKqhg2eWZ27wryXeeuS8hTmebmG2wQGe3yAZtfyFd8OT1pvAMvhIEhsx4nFLNEq51Igks-cc1q9C5-Cbj64e5g23ultJVH_QlVegjmjVEZqCNh5Vu8RirG3_Ud1t-ZqKoTd3R4tbRw-PL3x5kTo1F_uYLKdfrjaU5KKv_a_0RXzjB6BkW1V_kSY1AGYM.AT1_tfkE6epG";
     
     let mapNode1 = document.querySelector<HTMLDivElement>('#map1');
     let mapNode2 = document.querySelector<HTMLDivElement>('#map2');
