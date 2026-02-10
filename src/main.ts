@@ -12,7 +12,7 @@ let map1Loaded = false;
 let map2Loaded = false;
 
 // add API key
-esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurACde3U08kHnbvXYlfr-fzhYfvWRTBqxeLU1a_S3B0uS2rrup-yevDdSz5CE67SM4KgfW-QNPpg-2nP6MhrU1Pa1c-JVRUP_pvwZdm1gIyeGV-fcYVGOs020SdtNkxEmWRHtq6tm9rxfU6NHmYU2uJJWcvVsBuk8G6R4XrPa0c_DWiILsLJNBU8A6iczL9I6EYKU_-M-HF2p10n6irnfZW4.AT1_tfkE6epG";
+esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurACde3U08kHnbvXYlfr-fziVi3bFFzvfsCQhioN_2F8dMOZsXSTpZWrSr1QLbfy6amX_fjUZh4MBub2IKxu1mt6cqd3FXJDI8MB2cNuTUTYK7BO8sO3pMjEH9aCk0uv0BdS0k_WRkR3IIiz4Mg5UCwnqUSSMb-XZF532zP3vVT-KgQUxW2v9GPiQ7xS8y66dOw-Wxfq9jVs7o5YkOIxCy0A.AT1_tfkE6epG";
 
 async function main() {
     
