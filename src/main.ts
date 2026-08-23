@@ -11,8 +11,7 @@ import esriConfig from "@arcgis/core/config";
 let map1Loaded = false;
 let map2Loaded = false;
 
-// add API key
-esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurACde3U08kHnbvXYlfr-fzjgw8lKDjJnJzH6qOVIFFa1CAjnYk7bWsLRrqmkMphTHacHplH9fRdgfiWo0agcPRl3hqixElJfj7zB0MmxyQl4cmENzP3muo8SlQbZ2IoAVOnwtX7VKsvwXKUo9WhdsgJxhbxwyq5ItiKETAmAVK9kZJcgcSBNBUP7e3MLbcpKbArAljadrUd0ggYxLhbfo8s.AT1_tfkE6epG";
+esriConfig.apiKey = import.meta.env.VITE_ARCGIS_API_KEY;
 
 async function main() {
     
